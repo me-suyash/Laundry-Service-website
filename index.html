@@ -5,20 +5,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Laundry Service</title>
-    
+
     <!-- External stylesheets -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
-  
+
   <body>
     <!-- Header Section: Navigation and branding -->
     <div class="header">
       <div class="logo">Logo</div>
-      
+
       <!-- Main navigation menu -->
       <div class="nav">
         <a href="#home" class="home">Home</a>
@@ -26,7 +31,7 @@
         <a href="#about" class="about">About Us</a>
         <a href="#contact" class="contact">Contact Us</a>
       </div>
-      
+
       <!-- User profile button -->
       <button class="username">User Name</button>
     </div>
@@ -45,7 +50,7 @@
         </p>
         <button>Book a service today</button>
       </div>
-      
+
       <!-- Right side: Hero image -->
       <div class="right-side">
         <img src="./IMG/service.png" alt="product-img" />
@@ -55,19 +60,19 @@
     <!-- Achievement Dashboard: Company statistics -->
     <div class="achievement-dashboard">
       <h1>Our Achievements</h1>
-      
+
       <!-- Service count achievement -->
       <div class="service-achievement">
         <h4>15+</h4>
         <p>Laundry Services</p>
       </div>
-      
+
       <!-- Customer count achievement -->
       <div class="customer-achievement">
         <h4>250+</h4>
         <p>Happy Customers</p>
       </div>
-      
+
       <!-- Experience achievement -->
       <div class="experience-achievement">
         <h4>2+ Yrs</h4>
@@ -82,12 +87,12 @@
         <h1>Our Services</h1>
         <p>Click On The Add to cart Button To Add the services to your cart</p>
         <hr />
-        
+
         <!-- Dynamic service container populated by JavaScript -->
         <div id="service-container"></div>
-        
+
         <hr />
-        
+
         <!-- Information section with icon and message -->
         <div class="info-section">
           <i class="material-icons">error_outline</i>
@@ -98,14 +103,14 @@
       <!-- Right side: Cart and booking form -->
       <div class="book-services">
         <h2>Add Items</h2>
-        
+
         <!-- Cart table header -->
         <div class="table-head">
           <h4>S.No</h4>
           <h4>Service Name</h4>
           <h4>Price</h4>
         </div>
-        
+
         <!-- Cart container with empty state -->
         <div id="cart-container">
           <div class="empty-cart">
@@ -114,13 +119,13 @@
             <p>Add items to the cart form the services bar</p>
           </div>
         </div>
-        
+
         <!-- Total amount display -->
         <div class="total">
           <h4>Total Amount</h4>
           <h4 id="total-price">₹0.00</h4>
         </div>
-        
+
         <!-- Booking form with customer details -->
         <form class="booking-form" id="booking-form">
           <label for="name">Full Name:</label>
@@ -134,12 +139,129 @@
 
           <input type="submit" value="Book Now" />
         </form>
-        
+
         <!-- Success/Error message display -->
         <div class="message" id="message">
           <i class="material-icons" id="confirm-icon">check_circle</i>
           <span id="message-text"></span>
         </div>
+      </div>
+    </div>
+
+    <div class="quality-description">
+      <div class="box">
+        <img
+          src="https://www.svgrepo.com/show/53542/laundry-service.svg"
+          alt="Premium Services Img"
+        />
+        <h2>Premium Services</h2>
+        <p>
+          Elevate your wardrobe with our meticulous dry cleaning, ensuring
+          garments look and feel as good as new.
+        </p>
+      </div>
+      <div class="box">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/490/490341.png"
+          alt="Quick Support Img"
+        />
+        <h2>Quick Support</h2>
+        <p>
+          Wo're committed to providing prompt solutions to ensure your
+          experience is smooth and worry-free.
+        </p>
+      </div>
+      <div class="box">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/7615/7615749.png"
+          alt="Hassle Free Delivery Img"
+        />
+        <h2>Hassle Free Delivery</h2>
+        <p>
+          Enjoy seamless service With our convenient pickup and delivery
+          options, tailored to your schedule.
+        </p>
+      </div>
+      <div class="box">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/1578/1578602.png"
+          alt="Affordable Prices Img"
+        />
+        <h2>Affordable Prices</h2>
+        <p>
+          Experience exceptional care without breaking the bank - our affordable
+          prices make laundry day stress-free.
+        </p>
+      </div>
+    </div>
+
+    <div class="newsletter-subscription">
+      <h1>Subscribe to our newsletter.</h1>
+      <form id="newsletter-form">
+        <input
+          type="text"
+          name="full-name"
+          id="fullName"
+          placeholder="Full Name"
+          required
+        />
+        <input
+          type="email"
+          name="email-id"
+          id="emailId"
+          placeholder="Email"
+          required
+        />
+        <div class="error-message" id="nameError">Please enter your full name</div>
+        <div class="error-message" id="emailError">Please enter a valid email address</div>
+        <input type="submit" value="Subscribe" />
+        <div class="success-message" id="successMessage">
+          Thank you for subscribing! We'll keep you updated with our latest
+          offers.
+        </div>
+      </form>
+    </div>
+
+    <div class="footer">
+      <div class="box-1">
+        <h2>Logo</h2>
+        <h5>About Us</h5>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla harum
+          dolor, ex eveniet iusto aperiam impedit assumenda eaque distinctio in.
+        </p>
+      </div>
+      <div class="box-2 links">
+        <h5>Important Links</h5>
+        <a href="#about">About us</a>
+        <a href="#contact">Contact us</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of use</a>
+        <a href="#refund">Refund Policy</a>
+      </div>
+      <div class="box-2">
+        <h5>Contact</h5>
+        <p>
+          <i
+            class="fas fa-envelope"
+            style="font-size: 18px; margin-right: 10px"
+          ></i>
+          mail@site.com
+        </p>
+        <p>
+          <i
+            class="fas fa-phone"
+            style="font-size: 18px; margin-right: 10px"
+          ></i>
+          +91 9876543210
+        </p>
+      </div>
+      <div class="box-2">
+        <h5>Follow Us</h5>
+        <a href="#instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#youtube"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
 

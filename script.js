@@ -47,13 +47,13 @@ let cart = [];
  */
 function renderServices() {
   const serviceContainer = document.getElementById("service-container");
-  
+
   // Generate HTML for each service with dynamic button states
   serviceContainer.innerHTML = services
     .map((service) => {
       // Check if service is already in cart
       const isInCart = cart.some((item) => item.id === service.id);
-      
+
       return `
         <div class="service-item">
           <div class="service-left">
@@ -65,7 +65,9 @@ function renderServices() {
           <div class="service-actions">
             <span class="service-price">₹${service.price}.00</span>
             <button class="btn ${isInCart ? "btn-remove" : "btn-add"}" 
-                    onclick="${isInCart ? "removeFromCart" : "addToCart"}(${service.id})">
+                    onclick="${isInCart ? "removeFromCart" : "addToCart"}(${
+        service.id
+      })">
               <span>${isInCart ? "Remove Item" : "Add Item"}</span>
             </button>
           </div>
@@ -119,12 +121,12 @@ function renderCart() {
  */
 function addToCart(serviceId) {
   const service = services.find((s) => s.id === serviceId);
-  
+
   // Add service if found and not already in cart
   if (service && !cart.some((item) => item.id === serviceId)) {
     cart.push(service);
     renderServices(); // Update service buttons
-    renderCart();     // Update cart display
+    renderCart(); // Update cart display
   }
 }
 
@@ -135,7 +137,7 @@ function addToCart(serviceId) {
 function removeFromCart(serviceId) {
   cart = cart.filter((item) => item.id !== serviceId);
   renderServices(); // Update service buttons
-  renderCart();     // Update cart display
+  renderCart(); // Update cart display
 }
 
 /**
@@ -145,7 +147,7 @@ function removeFromCart(serviceId) {
 function showMessage(text) {
   const messageElement = document.getElementById("message");
   const messageText = document.getElementById("message-text");
-  
+
   // Set message text and show
   messageText.textContent = text;
   messageElement.classList.add("show");
@@ -184,7 +186,9 @@ document
       const confirmBooking = confirm(
         `Confirm your booking:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nServices: ${cart
           .map((item) => item.name)
-          .join(", ")}\nTotal: ₹${total}.00\n\nClick OK to confirm booking, or Cancel to continue editing.`
+          .join(
+            ", "
+          )}\nTotal: ₹${total}.00\n\nClick OK to confirm booking, or Cancel to continue editing.`
       );
 
       // Process confirmed booking
@@ -193,7 +197,7 @@ document
         showMessage(
           `Booking confirmed for ${name}! Total amount: ₹${total}.00. You will receive confirmation details shortly.`
         );
-        
+
         // Reset form and cart after successful booking
         document.getElementById("booking-form").reset();
         cart = [];
@@ -206,3 +210,114 @@ document
 // Initialize the application by rendering cart and services
 renderCart();
 renderServices();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("newsletter-form");
+  const fullNameInput = document.getElementById("fullName");
+  const emailInput = document.getElementById("emailId");
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const successMessage = document.getElementById("successMessage");
+
+  // Email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Real-time validation
+  fullNameInput.addEventListener("input", function () {
+    validateName();
+  });
+
+  emailInput.addEventListener("input", function () {
+    validateEmail();
+  });
+
+  function validateName() {
+    const name = fullNameInput.value.trim();
+    if (name.length < 2) {
+      nameError.style.display = "block";
+      emailInput.disabled = true;
+      nameError.textContent = "Name must be at least 2 characters long";
+      if (name.length === 0) {
+        emailInput.disabled = false;
+        nameError.style.display = "none";
+      }
+      return false;
+    } else {
+      emailInput.disabled = false;
+      nameError.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateEmail() {
+    const email = emailInput.value.trim();
+    if (!emailRegex.test(email)) {
+      emailError.style.display = "block";
+      emailError.textContent = "Please enter a valid email address";
+      return false;
+    } else {
+      emailError.style.display = "none";
+      return true;
+    }
+  }
+
+  // Form submission
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Hide previous messages
+    nameError.style.display = "none";
+    emailError.style.display = "none";
+    successMessage.style.display = "none";
+
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+
+    if (isNameValid && isEmailValid) {
+      // Simulate form submission
+      const submitButton = form.querySelector('input[type="submit"]');
+      const originalText = submitButton.value;
+
+      submitButton.value = "Subscribing...";
+      submitButton.disabled = true;
+
+      setTimeout(() => {
+        // Show success message
+        successMessage.style.display = "block";
+
+        // Reset form
+        form.reset();
+
+        // Reset button
+        submitButton.value = originalText;
+        submitButton.disabled = false;
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          successMessage.style.display = "none";
+        }, 5000);
+
+        // In a real application, you would send the data to your server here
+        console.log("Newsletter subscription:", {
+          name: fullNameInput.value,
+          email: emailInput.value,
+          timestamp: new Date().toISOString(),
+        });
+      }, 1500);
+    }
+  });
+
+  // Add smooth scrolling for internal links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    });
+  });
+});
