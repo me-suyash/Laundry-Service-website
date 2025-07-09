@@ -311,6 +311,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!emailRegex.test(email)) {
       emailError.style.display = "block";
       emailError.textContent = "Please enter a valid email address";
+      if (email.length === 0) {
+        emailError.style.display = "none";
+      }
       return false;
     } else {
       emailError.style.display = "none";
