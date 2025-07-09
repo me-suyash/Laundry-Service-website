@@ -11,6 +11,11 @@
   background-color: black;
   color: greenyellow;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #e0e0e0;
   font-family: Arial, sans-serif;
@@ -22,6 +27,7 @@ body {
   padding: 15px 20px;
   align-items: center;
   min-height: 10vh;
+  flex-wrap: wrap;
 
   .logo {
     font-size: x-large;
@@ -72,6 +78,7 @@ body {
   display: flex;
   padding: 40px;
   min-height: 60vh;
+  flex-wrap: wrap;
 }
 
 .left-side {
@@ -100,22 +107,72 @@ body {
     border-radius: 8px 16px;
     text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /* Enhanced button hover effect */
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
 }
+
+#serviceSection {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+#serviceSection {
+  scroll-margin-top: 20px;
+}
+
 .right-side {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   img {
-    width: 55%;
+    max-width: 500px;
   }
 }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .achievement-dashboard {
   height: 20vh;
   background-color: black;
   color: white;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 
   h1 {
@@ -126,6 +183,7 @@ body {
     flex: 1;
   }
 }
+
 .services-add {
   height: 100vh;
   padding: 20px;
@@ -142,6 +200,8 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    animation: slideInFromLeft 0.8s ease forwards;
+    
     hr {
       margin: 20px 0;
     }
@@ -155,6 +215,7 @@ body {
       color: #666;
     }
   }
+  
   .book-services {
     flex: 1;
     padding: 30px;
@@ -163,8 +224,17 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    animation: slideInFromRight 0.8s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
   }
 }
+
+.services-add .book-services {
+  animation: slideInFromRight 0.8s ease forwards;
+  animation-delay: 0.2s;
+}
+
 #service-container {
   flex: 1;
   overflow-y: auto;
@@ -183,7 +253,16 @@ body {
     padding: 15px;
     min-height: 80px;
     flex-shrink: 0;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
   }
+
+  .service-item:nth-child(1) { animation-delay: 0.5s; }
+  .service-item:nth-child(2) { animation-delay: 0.6s; }
+  .service-item:nth-child(3) { animation-delay: 0.7s; }
+  .service-item:nth-child(4) { animation-delay: 0.8s; }
+  .service-item:nth-child(5) { animation-delay: 0.9s; }
+  .service-item:nth-child(n+6) { animation-delay: 1s; }
 
   .service-left {
     display: flex;
@@ -226,7 +305,7 @@ body {
     align-items: center;
     gap: 5px;
     background-color: white;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
     font-size: 14px;
   }
 
@@ -242,8 +321,10 @@ body {
     border-color: #f44336;
   }
 }
+
 .btn:hover {
   opacity: 0.9;
+  transform: translateY(-2px);
 }
 
 .book-services {
@@ -326,7 +407,17 @@ body {
       border: 1px solid #ddd;
       border-radius: 5px;
       font-size: 14px;
+      transition: all 0.3s ease;
     }
+    
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus {
+      outline: none;
+      border-color: #4caf50;
+      box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+    }
+    
     input[type="submit"] {
       width: 100%;
       padding: 12px;
@@ -337,6 +428,7 @@ body {
       cursor: pointer;
       font-size: 16px;
       font-weight: bold;
+      transition: all 0.3s ease;
     }
   }
 
@@ -356,6 +448,8 @@ body {
 
 .booking-form input[type="submit"]:hover {
   background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 #service-container::-webkit-scrollbar,
@@ -400,6 +494,7 @@ body {
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 
     img {
       width: 80px;
@@ -417,6 +512,10 @@ body {
       font-size: 1rem;
       line-height: 1.5;
     }
+  }
+  
+  .box:hover {
+    transform: translateY(-5px);
   }
 }
 
@@ -441,12 +540,13 @@ body {
       height: 50px;
       width: 300px;
       margin-top: 10px;
-      margin-right:10px ;
+      margin-right: 10px;
       font-size: 16px;
       padding: 15px;
       border: none;
       border-radius: 8px;
       background: #ffffff6b;
+      transition: all 0.3s ease;
     }
 
     input[type="text"]:focus,
@@ -468,7 +568,15 @@ body {
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 1px;
+      transition: all 0.3s ease;
     }
+    
+    input[type="submit"]:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
     .error-message {
       color: #ff6b6b;
       font-size: 14px;
@@ -512,11 +620,12 @@ body {
       text-decoration: none;
       color: black;
       padding-right: 15px;
+      transition: color 0.3s ease;
     }
 
     i {
       font-size: 24px;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
     }
     i:hover {
       color: red;
