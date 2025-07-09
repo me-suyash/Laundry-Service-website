@@ -16,15 +16,22 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
 
+    <!-- EmailJS CDN for email functionality -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/emailjs-com/3.2.0/email.min.js"
+    ></script>
+
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <!-- Header Section: Navigation and branding -->
+    <!-- Header Section: Navigation bar with logo and menu items -->
     <div class="header">
+      <!-- Company logo/brand -->
       <div class="logo">Logo</div>
 
-      <!-- Main navigation menu -->
+      <!-- Main navigation menu with internal links -->
       <div class="nav">
         <a href="#home" class="home">Home</a>
         <a href="#services" class="services">Services</a>
@@ -32,13 +39,13 @@
         <a href="#contact" class="contact">Contact Us</a>
       </div>
 
-      <!-- User profile button -->
+      <!-- User profile/account button -->
       <button class="username">User Name</button>
     </div>
 
-    <!-- Hero Section: Main landing area with call-to-action -->
+    <!-- Hero Section: Main banner with call-to-action -->
     <div class="hero">
-      <!-- Left side: Main content and CTA -->
+      <!-- Left side: Headline, description and main CTA button -->
       <div class="left-side">
         <h1>
           Revitalize Your Clothes with Expert <span>Laundry Services!</span>
@@ -48,70 +55,71 @@
           convenience. Schedule a pickup and rediscover the freshness of your
           clothes today!
         </p>
+        <!-- Primary call-to-action button -->
         <button>Book a service today</button>
       </div>
 
-      <!-- Right side: Hero image -->
+      <!-- Right side: Hero image showcasing services -->
       <div class="right-side">
-        <img src="./IMG/service.png" alt="product-img" />
+        <img src="./IMG/service.png" alt="Laundry service showcase" />
       </div>
     </div>
 
-    <!-- Achievement Dashboard: Company statistics -->
+    <!-- Achievement Dashboard: Company statistics and milestones -->
     <div class="achievement-dashboard">
       <h1>Our Achievements</h1>
 
-      <!-- Service count achievement -->
+      <!-- Service count metric -->
       <div class="service-achievement">
         <h4>15+</h4>
         <p>Laundry Services</p>
       </div>
 
-      <!-- Customer count achievement -->
+      <!-- Customer satisfaction metric -->
       <div class="customer-achievement">
         <h4>250+</h4>
         <p>Happy Customers</p>
       </div>
 
-      <!-- Experience achievement -->
+      <!-- Business experience metric -->
       <div class="experience-achievement">
         <h4>2+ Yrs</h4>
         <p>Experience</p>
       </div>
     </div>
 
-    <!-- Services and Booking Section: Main functionality area -->
+    <!-- Services and Booking Section: Main application functionality -->
     <div class="services-add">
-      <!-- Left side: Services selection -->
+      <!-- Left side: Available services selection panel -->
       <div class="our-services">
         <h1>Our Services</h1>
         <p>Click On The Add to cart Button To Add the services to your cart</p>
         <hr />
 
-        <!-- Dynamic service container populated by JavaScript -->
+        <!-- Dynamic service container - populated by JavaScript -->
         <div id="service-container"></div>
 
         <hr />
 
-        <!-- Information section with icon and message -->
+        <!-- Information section with helpful message -->
         <div class="info-section">
           <i class="material-icons">error_outline</i>
           <p>Add items to the cart and book now</p>
         </div>
       </div>
 
-      <!-- Right side: Cart and booking form -->
+      <!-- Right side: Shopping cart and booking form -->
       <div class="book-services">
         <h2>Add Items</h2>
 
-        <!-- Cart table header -->
+        <!-- Cart table headers -->
         <div class="table-head">
           <h4>S.No</h4>
           <h4>Service Name</h4>
           <h4>Price</h4>
         </div>
 
-        <!-- Cart container with empty state -->
+        <!-- Cart container - shows selected services or empty state -->
         <div id="cart-container">
           <div class="empty-cart">
             <i class="material-icons">error_outline</i>
@@ -120,27 +128,31 @@
           </div>
         </div>
 
-        <!-- Total amount display -->
+        <!-- Total amount calculation display -->
         <div class="total">
           <h4>Total Amount</h4>
           <h4 id="total-price">₹0.00</h4>
         </div>
 
-        <!-- Booking form with customer details -->
+        <!-- Booking form: Customer information collection -->
         <form class="booking-form" id="booking-form">
+          <!-- Customer full name input -->
           <label for="name">Full Name:</label>
           <input type="text" id="name" name="name" required />
 
+          <!-- Customer email input -->
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required />
 
+          <!-- Customer phone number input -->
           <label for="phone">Phone Number:</label>
           <input type="tel" id="phone" name="phone" required />
 
+          <!-- Submit button for booking -->
           <input type="submit" value="Book Now" />
         </form>
 
-        <!-- Success/Error message display -->
+        <!-- Success/Error message display area -->
         <div class="message" id="message">
           <i class="material-icons" id="confirm-icon">check_circle</i>
           <span id="message-text"></span>
@@ -148,11 +160,13 @@
       </div>
     </div>
 
+    <!-- Quality Description Section: Service highlights and benefits -->
     <div class="quality-description">
+      <!-- Premium services highlight -->
       <div class="box">
         <img
           src="https://www.svgrepo.com/show/53542/laundry-service.svg"
-          alt="Premium Services Img"
+          alt="Premium Services Icon"
         />
         <h2>Premium Services</h2>
         <p>
@@ -160,32 +174,38 @@
           garments look and feel as good as new.
         </p>
       </div>
+
+      <!-- Quick support highlight -->
       <div class="box">
         <img
           src="https://cdn-icons-png.flaticon.com/512/490/490341.png"
-          alt="Quick Support Img"
+          alt="Quick Support Icon"
         />
         <h2>Quick Support</h2>
         <p>
-          Wo're committed to providing prompt solutions to ensure your
+          We're committed to providing prompt solutions to ensure your
           experience is smooth and worry-free.
         </p>
       </div>
+
+      <!-- Delivery service highlight -->
       <div class="box">
         <img
           src="https://cdn-icons-png.flaticon.com/512/7615/7615749.png"
-          alt="Hassle Free Delivery Img"
+          alt="Hassle Free Delivery Icon"
         />
         <h2>Hassle Free Delivery</h2>
         <p>
-          Enjoy seamless service With our convenient pickup and delivery
+          Enjoy seamless service with our convenient pickup and delivery
           options, tailored to your schedule.
         </p>
       </div>
+
+      <!-- Pricing highlight -->
       <div class="box">
         <img
           src="https://cdn-icons-png.flaticon.com/512/1578/1578602.png"
-          alt="Affordable Prices Img"
+          alt="Affordable Prices Icon"
         />
         <h2>Affordable Prices</h2>
         <p>
@@ -195,9 +215,11 @@
       </div>
     </div>
 
+    <!-- Newsletter Subscription Section: Email marketing signup -->
     <div class="newsletter-subscription">
       <h1>Subscribe to our newsletter.</h1>
       <form id="newsletter-form">
+        <!-- Newsletter subscriber name input -->
         <input
           type="text"
           name="full-name"
@@ -205,6 +227,7 @@
           placeholder="Full Name"
           required
         />
+        <!-- Newsletter subscriber email input -->
         <input
           type="email"
           name="email-id"
@@ -212,9 +235,16 @@
           placeholder="Email"
           required
         />
-        <div class="error-message" id="nameError">Please enter your full name</div>
-        <div class="error-message" id="emailError">Please enter a valid email address</div>
+        <!-- Error message containers -->
+        <div class="error-message" id="nameError">
+          Please enter your full name
+        </div>
+        <div class="error-message" id="emailError">
+          Please enter a valid email address
+        </div>
+        <!-- Newsletter subscription submit button -->
         <input type="submit" value="Subscribe" />
+        <!-- Success message for newsletter subscription -->
         <div class="success-message" id="successMessage">
           Thank you for subscribing! We'll keep you updated with our latest
           offers.
@@ -222,7 +252,9 @@
       </form>
     </div>
 
+    <!-- Footer Section: Company information and links -->
     <div class="footer">
+      <!-- Company information and about section -->
       <div class="box-1">
         <h2>Logo</h2>
         <h5>About Us</h5>
@@ -231,6 +263,8 @@
           dolor, ex eveniet iusto aperiam impedit assumenda eaque distinctio in.
         </p>
       </div>
+
+      <!-- Important links navigation -->
       <div class="box-2 links">
         <h5>Important Links</h5>
         <a href="#about">About us</a>
@@ -239,6 +273,8 @@
         <a href="#terms">Terms of use</a>
         <a href="#refund">Refund Policy</a>
       </div>
+
+      <!-- Contact information -->
       <div class="box-2">
         <h5>Contact</h5>
         <p>
@@ -256,6 +292,8 @@
           +91 9876543210
         </p>
       </div>
+
+      <!-- Social media links -->
       <div class="box-2">
         <h5>Follow Us</h5>
         <a href="#instagram"><i class="fab fa-instagram"></i></a>
@@ -265,6 +303,11 @@
       </div>
     </div>
 
+    <!-- EmailJS CDN for email functionality -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
     <!-- JavaScript for dynamic functionality -->
     <script src="script.js"></script>
   </body>

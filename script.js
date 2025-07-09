@@ -1,3 +1,6 @@
+// Initialize EmailJS with your public key
+emailjs.init("O5XsW2XEdXwm4oEXU");
+
 // Service data array containing all available laundry services
 const services = [
   {
@@ -158,6 +161,41 @@ function showMessage(text) {
   }, 2000);
 }
 
+/**
+ * Sends confirmation email using EmailJS
+ * @param {Object} bookingData - The booking information
+ */
+function sendConfirmationEmail(bookingData) {
+  // Email template parameters
+  const templateParams = {
+    to_name: bookingData.name,
+    to_email: bookingData.email,
+    from_name: "Laundry Service",
+    phone: bookingData.phone,
+    services: bookingData.services.map((service) => service.name).join(", "),
+    total_amount: bookingData.total,
+    booking_date: new Date().toLocaleDateString(),
+  };
+
+  // Send email using EmailJS
+  emailjs
+    .send("service_b4ptw66", "template_x873rko", templateParams)
+    .then(function (response) {
+      console.log("Email sent successfully:", response.status, response.text);
+      showMessage(
+        "Thank you for booking the service! We will get back to you soon!",
+        true
+      );
+    })
+    .catch(function (error) {
+      console.error("Email sending failed:", error);
+      showMessage(
+        "Booking confirmed! However, we couldn't send the confirmation email. We'll contact you directly.",
+        true
+      );
+    });
+}
+
 // Form submission handler for booking services
 document
   .getElementById("booking-form")
@@ -174,9 +212,16 @@ document
     }
 
     // Get form data
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    // Validate form fields
+    if (!name || !email || !phone) {
+      document.getElementById("confirm-icon").textContent = "error_outline";
+      showMessage("Please fill in all required fields.", false);
+      return;
+    }
 
     // Process booking if all fields are filled
     if (name && email && phone) {
@@ -193,6 +238,18 @@ document
 
       // Process confirmed booking
       if (confirmBooking) {
+        // Prepare booking data
+        const bookingData = {
+          name: name,
+          email: email,
+          phone: phone,
+          services: cart,
+          total: total,
+        };
+
+        // Send confirmation email
+        sendConfirmationEmail(bookingData);
+
         document.getElementById("confirm-icon").textContent = "check_circle";
         showMessage(
           `Booking confirmed for ${name}! Total amount: ₹${total}.00. You will receive confirmation details shortly.`
